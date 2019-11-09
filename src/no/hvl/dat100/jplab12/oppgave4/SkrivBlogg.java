@@ -11,7 +11,18 @@ public class SkrivBlogg {
 	private static String MAPPE = System.getProperty("user.dir") + "/src/no/hvl/dat100/jplab12/tests/";
 
 	public static boolean skriv(Blogg samling, String filnavn) {
+		boolean sattinn;
 
-		throw new UnsupportedOperationException(TODO.method());
+		try {
+			PrintWriter skriver = new PrintWriter(filnavn);
+			skriver.println(samling.toString());
+			sattinn = true;
+			skriver.close();
+			
+		} catch (FileNotFoundException e) {
+			sattinn = false;
+		}
+
+		return sattinn;
 	}
 }
